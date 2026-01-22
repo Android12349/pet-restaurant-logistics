@@ -1,0 +1,40 @@
+{
+    "clients": [
+        {
+            "id": "person-1",
+            "name": "Иван",
+            "age": 15
+        },
+        {
+            "id": "person-2",
+            "name": "Петр",
+            "age": 20
+        }
+    ],
+    "order": [
+        {
+            "id": "order-1",
+            "client_id": "person-1",
+            "dish": "Паста Карбонара",
+            "quantity": 1
+        },
+        {
+            "id": "order-2",
+            "client_id": "person-1",
+            "dish": "Пепси",
+            "quantity": 1
+        },
+        {
+            "id": "order-3",
+            "client_id": "person-2",
+            "dish": "Салат Цезарь",
+            "quantity": 1
+        },
+        {
+            "id": "order-4",
+            "client_id": "person-2",
+            "dish": "Красное вино",
+            "quantity": 1
+        }
+    ]
+}
