@@ -1,6 +1,6 @@
 import * as fs from 'fs';
 import * as path from 'path';
-import type { Order, Client } from '../../types/orderData.ts';
+import type { Client, Order } from '../../types/orderData.ts';
 
 export function parseOrderFile(fileName: string): { clients: Client[]; orders: Order[] } {
     const filePath = path.join(__dirname, '../../data', fileName);

@@ -13,7 +13,11 @@ export class Administrator {
     }
 
     private decrementClientCount(): void {
-        this.current_clients -= 1;
+        if (this.current_clients > 0) {
+            this.current_clients -= 1;
+        } else {
+            console.log("Ошибка. Клиентов не может быть меньше 0!")
+        }
     }
 
     public acceptOrder(fileName: string): string {
@@ -22,7 +26,7 @@ export class Administrator {
 
         if (this.canLetInMoreClients(clientsAmount)) {
             this.AddClientCount(clientsAmount);
-            return "Ваш заказ принят, ожидайте!";
+            return `Ваш заказ принят, ожидайте! Текущая загруженность: ${this.current_clients}`;
         } else {
             return "Извините, мест нет, приходите позже.";
         }
