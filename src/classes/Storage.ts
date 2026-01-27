@@ -4,31 +4,60 @@ import type { Ingredient } from "../types/dishData";
 export class Storage {
     private ingredients: Map<Ingredient, number> = new Map();
 
-    private ingredientExists(ingredient: Ingredient): Ingredient | false{
+    // Проверяет, есть ли ингредиент на складе
+    private ingredientExists(ingredient: Ingredient): Ingredient | void {
         for (let key of this.ingredients.keys()) {
             if (key.name === ingredient.name) {
                 return key;
             }
         }
-        return false;
     }
 
+    // Геттер
+    private getIngredientQuantity(ingredient: Ingredient): number | void {
+        const foundKey = this.ingredientExists(ingredient);
+        return foundKey ? this.ingredients.get(foundKey) : undefined;
+    }
+
+    // Сеттер
+    private setIngredientQuantity(ingredient: Ingredient, quantity: number): void {
+        this.ingredients.set(ingredient, quantity);
+    }
+
+    // Добавляет ингредиент на склад, если его там еще нет
     public addIngredient(ingredient: Ingredient, quantity: number): void {
-        const findKey = this.ingredientExists(ingredient);
-        if (findKey === false) {
-            this.ingredients.set(ingredient, quantity);
-            console.log(`Ингредиент '${ingredient.name}' добавлен на склад.`);        
+        const foundKey = this.ingredientExists(ingredient);
+        if (foundKey) {
+            this.setIngredientQuantity(foundKey, quantity);
+            console.log(`Склад успешно добавил ингредиент '${ingredient.name}'.`);        
         } else {
             console.log(`Ошибка: ингредиент '${ingredient.name}' уже есть на складе.`);
         }
     }
 
+    // Пополняет количество ингредиента на складе на определенное значение
     public restockIngredient(ingredient: Ingredient, quantity: number): void {
-        const findKey = this.ingredientExists(ingredient);
-        if (findKey !== false) {
-            const currentQuantity = this.ingredients.get(findKey) || 0;
-            this.ingredients.set(findKey, currentQuantity + quantity);
-            console.log(`Текущее количество ингредиента '${ingredient.name}': ${this.ingredients.get(findKey)}.`);
+        const foundKey = this.ingredientExists(ingredient);
+        if (foundKey) {
+            const currentQuantity = this.getIngredientQuantity(foundKey) || 0;
+            this.setIngredientQuantity(foundKey, currentQuantity + quantity);
+            console.log(`Склад успешно пополнен ингредиентом '${ingredient.name}'.`);
+        } else {
+            console.log(`Ошибка: ингредиент '${ingredient.name}' не найден на складе.`);        
+        }
+    }
+
+    // Выдает определенное количество ингредиента со склада
+    public takeIngredient(ingredient: Ingredient, quantity: number): void {
+        const foundKey = this.ingredientExists(ingredient);
+        if (foundKey) {
+            const currentQuantity = this.getIngredientQuantity(foundKey) || 0;
+            if (currentQuantity >= quantity) {
+                this.setIngredientQuantity(foundKey, currentQuantity - quantity);
+                console.log(`Склад успешно выдал ингредиент '${ingredient.name}'.`);
+            } else {
+                console.log(`Ошибка: недостаточно ингредиента '${ingredient.name}' на складе.`);        
+            }
         } else {
             console.log(`Ошибка: ингредиент '${ingredient.name}' не найден на складе.`);        
         }
