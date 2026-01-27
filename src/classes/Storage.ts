@@ -25,7 +25,7 @@ export class Storage {
     }
 
     // Добавляет ингредиент на склад, если его там еще нет
-    public addIngredient(ingredient: Ingredient, quantity: number): void {
+    addIngredient(ingredient: Ingredient, quantity: number): void {
         const foundKey = this.ingredientExists(ingredient);
         if (foundKey) {
             this.setIngredientQuantity(foundKey, quantity);
@@ -36,7 +36,7 @@ export class Storage {
     }
 
     // Пополняет количество ингредиента на складе на определенное значение
-    public restockIngredient(ingredient: Ingredient, quantity: number): void {
+    restockIngredient(ingredient: Ingredient, quantity: number): void {
         const foundKey = this.ingredientExists(ingredient);
         if (foundKey) {
             const currentQuantity = this.getIngredientQuantity(foundKey) || 0;
@@ -47,17 +47,24 @@ export class Storage {
         }
     }
 
-    // Выдает определенное количество ингредиента со склада
-    public takeIngredient(ingredient: Ingredient, quantity: number): void {
+    // Проверяет, достаточно ли ингредиента на складе
+    checkIngredientAvailability(ingredient: Ingredient, requiredQuantity: number): boolean {
         const foundKey = this.ingredientExists(ingredient);
         if (foundKey) {
             const currentQuantity = this.getIngredientQuantity(foundKey) || 0;
-            if (currentQuantity >= quantity) {
-                this.setIngredientQuantity(foundKey, currentQuantity - quantity);
-                console.log(`Склад успешно выдал ингредиент '${ingredient.name}'.`);
-            } else {
-                console.log(`Ошибка: недостаточно ингредиента '${ingredient.name}' на складе.`);        
-            }
+            return currentQuantity >= requiredQuantity;
+        } else {
+            return false;
+        }
+    }
+
+    // Выдает определенное количество ингредиента со склада
+    takeIngredient(ingredient: Ingredient, quantity: number): void {
+        const foundKey = this.ingredientExists(ingredient);
+        if (foundKey) {
+            const currentQuantity = this.getIngredientQuantity(foundKey) || 0;
+            this.setIngredientQuantity(foundKey, currentQuantity - quantity);
+            console.log(`Склад успешно выдал ингредиент '${ingredient.name}'.`);
         } else {
             console.log(`Ошибка: ингредиент '${ingredient.name}' не найден на складе.`);        
         }

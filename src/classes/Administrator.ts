@@ -20,7 +20,7 @@ export class Administrator {
         }
     }
 
-    public acceptOrder(fileName: string): string {
+    acceptOrder(fileName: string): string {
         const { clients, orders } = parseOrderFile(fileName);
         const clientsAmount = clients.length;
 

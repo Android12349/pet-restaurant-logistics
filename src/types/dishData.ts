@@ -5,5 +5,5 @@ export interface Ingredient {
 export interface Dish {
     name: string;
     category: "regular" | "18+";
-    ingredients: Ingredient[];
+    ingredients: Map<Ingredient, number>;
 }
