@@ -7,7 +7,9 @@ export class Kitchen {
     constructor(private storage: Storage) {}
 
     addRecipe(dish: Dish): void {
-        this.recipeBook.push(dish);
+        if (this.checkDishExistence(dish.name)) {
+            this.recipeBook.push(dish);
+        }
     }
 
     private checkDishExistence(dishName: string): boolean {
@@ -23,9 +25,9 @@ export class Kitchen {
         return this.recipeBook.find(dish => dish.name === dishName);
     }
 
-    private checkIngredients(dish: Dish): boolean {
+    private checkIngredients(dish: Dish, dish_amount: number): boolean {
         for (const [ingredient, quantity] of dish.ingredients) {
-            const available = this.storage.checkIngredientAvailability(ingredient, quantity);
+            const available = this.storage.checkIngredientAvailability(ingredient, quantity * dish_amount);
             if (!available) {
                 return false;
             }
@@ -47,7 +49,7 @@ export class Kitchen {
             const quantity = order[dishName] || 0;
             if (this.checkDishExistence(dishName)) {
                 const dish = this.getDishByName(dishName);
-                if (dish && this.checkIngredients(dish)) {
+                if (dish && this.checkIngredients(dish, quantity)) {
                     for (let i = 0; i < quantity; i++) {
                         const preparedDish = this.cookDish(dish);
                         preparedDishes.push(preparedDish);
