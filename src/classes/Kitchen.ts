@@ -3,13 +3,37 @@ import type { Dish, Ingredient } from "../types/dishData";
 
 export class Kitchen {
     private recipeBook: Dish[] = [];
+    private cookedAmount: number = 0;
 
     constructor(private storage: Storage) {}
-
 
     // Проверка существования блюда в книге рецептов
     private checkDishExistence(dishName: string): boolean {
         return this.recipeBook.some(dish => dish.name === dishName);
+    }
+
+    // Инкремент количества приготовленных блюд
+    private incrementCookedAmount(): void {
+        this.cookedAmount++;
+    }
+
+    // Проверка достигания лимита приготовленных блюд
+    private checkCookedAmountLimit(): boolean {
+        return this.cookedAmount >= 8;
+    }
+
+    // Сброс счетчика приготовленных блюд
+    private resetCookedAmount(): void {
+        this.cookedAmount = 0;
+    }
+
+    // Пополнение склада
+    private restockStorage(): void {
+        const allIngredients = this.storage.getAllIngredientsNames();
+        for (const ingredient of allIngredients) {
+            this.storage.restockIngredient(ingredient, 10);
+        }
+        this.resetCookedAmount();
     }
 
     // Геттер блюда
@@ -47,6 +71,10 @@ export class Kitchen {
         const result: string[] = [];
         for (let i = 0; i < quantity; i++) {
             result.push(this.serveDish(dish));
+            this.incrementCookedAmount();
+            if (this.checkCookedAmountLimit()) {
+                this.restockStorage();
+            }
         }
         return result;
     }

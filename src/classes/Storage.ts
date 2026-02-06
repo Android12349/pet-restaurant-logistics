@@ -18,6 +18,11 @@ export class Storage {
     private setIngredientQuantity(ingredient: Ingredient, quantity: number): void {
         this.ingredients[ingredient] = quantity;
     }
+    
+    // Геттер всех ингредиентов
+    getAllIngredientsNames(): Ingredient[] {
+        return Object.keys(this.ingredients) as Ingredient[];
+    }
 
     // Добавляет ингредиент на склад, если его там еще нет
     addIngredient(ingredient: Ingredient, quantity: number): void {
