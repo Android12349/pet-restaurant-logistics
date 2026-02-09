@@ -35,6 +35,3 @@ coverage/
 .idea/ # IntelliJ IDEA specific files
 .DS_Store # macOS
 Thumbs.db # Windows
-
-# Project folders
-src/data/responses
