@@ -2,7 +2,7 @@ import { ingredientsList } from "./ingredients";
 
 export type Ingredient = typeof ingredientsList[number];
 
-type category = "regular" | "18+";
+export type category = "regular" | "18+";
 
 export interface Dish {
     name: string;
