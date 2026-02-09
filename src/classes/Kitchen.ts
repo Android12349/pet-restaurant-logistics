@@ -1,5 +1,6 @@
 import { Storage } from "./Storage";
 import type { Dish, Ingredient } from "../types/dishData";
+import { dishesBeforeRestock, restockAmount } from "../constants";
 
 export class Kitchen {
     private cookedAmount: number = 0;
@@ -13,7 +14,7 @@ export class Kitchen {
 
     // Проверка достигания лимита приготовленных блюд
     private checkCookedAmountLimit(): boolean {
-        return this.cookedAmount >= 8;
+        return this.cookedAmount >= dishesBeforeRestock;
     }
 
     // Сброс счетчика приготовленных блюд
@@ -25,7 +26,7 @@ export class Kitchen {
     private restockStorage(): void {
         const allIngredients = this.storage.getAllIngredientsNames();
         for (const ingredient of allIngredients) {
-            this.storage.restockIngredient(ingredient, 10);
+            this.storage.restockIngredient(ingredient, restockAmount);
         }
         this.resetCookedAmount();
     }

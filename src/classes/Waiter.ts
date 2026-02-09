@@ -1,7 +1,7 @@
 import type { Client, Order } from "../types/orderData";
 import type { category, Dish } from "../types/dishData";
 import type { Kitchen } from "./Kitchen";
-import { createResponseForClient } from "../services/createResponseForClient";
+import { createResponseForClient } from "../services/parsers/createResponseForClient";
 
 
 export class Waiter {

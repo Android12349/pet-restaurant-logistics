@@ -1,8 +1,9 @@
 import * as fs from 'fs';
 import * as path from 'path';
 import { parseIngredients } from "./parsers/ingredientsFileParser";
+import { ingredientsFile } from "../constants";
 
-const ingredients = parseIngredients("ingredients.txt");
+const ingredients = parseIngredients(ingredientsFile);
 
 const output = 
 `// Не трогать, файл сгенерирован автоматически!
