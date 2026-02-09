@@ -6,7 +6,7 @@ import { Waiter } from "./Waiter";
 export class Administrator {
     private currentClientsCount: number = 0;
 
-    constructor(private maxCapacity: number, private waiter: Waiter) {}
+    constructor(private waiter: Waiter, private maxCapacity: number) {}
     
     // Проверка возможности пустить клиентов
     private canLetInMoreClients(amount: number): boolean {

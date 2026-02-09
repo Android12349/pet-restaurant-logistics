@@ -7,7 +7,7 @@ export function createResponseForClient(dishes: string[], clientId: string, orde
         dishCounts[dish] = (dishCounts[dish] || 0) + 1;
     }
 	const response = Object.entries(dishCounts).map(([dish, count]) => ({ dish, count }));
-	const responsesDir = path.join(__dirname, "../data/responses");
+	const responsesDir = path.join(__dirname, "../../data/responses");
 	const fileName = `response_for_order_${orderNumber}_for_${clientId}.json`;
 	const filePath = path.join(responsesDir, fileName);
 	fs.writeFileSync(filePath, JSON.stringify(response, null, 2), "utf-8");

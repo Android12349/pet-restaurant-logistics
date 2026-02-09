@@ -29,7 +29,6 @@ export class Storage {
         const existence = this.checkIngredientExists(ingredient);
         if (!existence) {
             this.setIngredientQuantity(ingredient, quantity);
-            console.log(`Склад успешно добавил ингредиент '${ingredient}'.`);        
         } else {
             console.log(`Ошибка: ингредиент '${ingredient}' уже есть на складе.`);
         }
@@ -41,7 +40,6 @@ export class Storage {
         if (existence) {
             const currentQuantity = this.getIngredientQuantity(ingredient);
             this.setIngredientQuantity(ingredient, currentQuantity + quantity);
-            console.log(`Склад успешно пополнен ингредиентом '${ingredient}'.`);
         } else {
             console.log(`Ошибка: ингредиент '${ingredient}' не найден на складе.`);        
         }
@@ -62,7 +60,6 @@ export class Storage {
         if (existence) {
             const currentQuantity = this.getIngredientQuantity(ingredient);
             this.setIngredientQuantity(ingredient, currentQuantity - quantity);
-            console.log(`Склад успешно выдал ингредиент '${ingredient}'.`);
         } else {
             console.log(`Ошибка: ингредиент '${ingredient}' не найден на складе.`);        
         }

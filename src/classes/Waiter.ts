@@ -6,7 +6,7 @@ import { createResponseForClient } from "../services/parsers/createResponseForCl
 
 export class Waiter {
     private orderCounter: number = 0;
-    constructor(private recipeBook: Dish[], private kitchen: Kitchen) {}
+    constructor(private kitchen: Kitchen, private recipeBook: Dish[]) {}
     
     private checkAgeReqForTheDish(clientAge: number, dishCategory: category): boolean {
         return dishCategory === "regular" || clientAge >= 18;
@@ -26,7 +26,7 @@ export class Waiter {
                 continue;
             }
             if (!this.checkAgeReqForTheDish(client.age, dish.category)) {
-                console.log(`Клиенту '${client.name}' нельзя заказывать блюдо '${dish.name}', малой еще`);
+                console.log(`Клиенту '${client.name}' нельзя заказывать блюдо '${dish.name}', малой (-ая) еще`);
                 continue
             }
             orderForKitchen[dish.name] = order.quantity;

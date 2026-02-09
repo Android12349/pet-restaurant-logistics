@@ -1,5 +1,5 @@
-import { Administrator } from "./classes/Administrator";
+import { App } from "./app";
 
 
-const admin = new Administrator(2);
-console.log(admin.acceptOrder("order1.json"));
+const app = new App();
+app.run();

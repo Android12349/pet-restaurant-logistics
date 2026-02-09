@@ -1,0 +1,23 @@
+{
+  "clients": [
+    {"id": "person-1", "name": "Максим", "age": 16},
+    {"id": "person-2", "name": "Елена", "age": 20},
+    {"id": "person-3", "name": "Владимир", "age": 15}
+  ],
+  "order": [
+    {"id": "order-1", "client_id": "person-1", "dish": "Паста Карбонара", "quantity": 1},
+    {"id": "order-2", "client_id": "person-2", "dish": "Салат Цезарь", "quantity": 1},
+    {"id": "order-3", "client_id": "person-3", "dish": "Пина Колада", "quantity": 1},
+    {"id": "order-4", "client_id": "person-1", "dish": "Мохито", "quantity": 1},
+    {"id": "order-5", "client_id": "person-2", "dish": "Мохито", "quantity": 1},
+    {"id": "order-6", "client_id": "person-3", "dish": "Пина Колада", "quantity": 1},
+    {"id": "order-7", "client_id": "person-1", "dish": "Мартини", "quantity": 1},
+    {"id": "order-8", "client_id": "person-2", "dish": "Виски-кола", "quantity": 1},
+    {"id": "order-9", "client_id": "person-3", "dish": "Капучино", "quantity": 1},
+    {"id": "order-10", "client_id": "person-1", "dish": "Чай зелёный", "quantity": 1},
+    {"id": "order-11", "client_id": "person-2", "dish": "Салат Греческий", "quantity": 1},
+    {"id": "order-12", "client_id": "person-3", "dish": "Салат Оливье", "quantity": 1},
+    {"id": "order-13", "client_id": "person-1", "dish": "Салат с тунцом", "quantity": 1},
+    {"id": "order-14", "client_id": "person-2", "dish": "Салат с креветками", "quantity": 1}
+  ]
+}

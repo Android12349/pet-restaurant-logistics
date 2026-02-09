@@ -1,0 +1,29 @@
+{
+  "clients": [
+    {"id": "person-1", "name": "Виктор", "age": 28},
+    {"id": "person-2", "name": "Екатерина", "age": 16},
+    {"id": "person-3", "name": "Сергей", "age": 30},
+    {"id": "person-4", "name": "Анна", "age": 27},
+    {"id": "person-5", "name": "Ирина", "age": 15}
+  ],
+  "order": [
+    {"id": "order-1", "client_id": "person-1", "dish": "Паста Карбонара", "quantity": 1},
+    {"id": "order-2", "client_id": "person-2", "dish": "Виски-кола", "quantity": 1},
+    {"id": "order-3", "client_id": "person-3", "dish": "Пепси", "quantity": 1},
+    {"id": "order-4", "client_id": "person-4", "dish": "Красное вино", "quantity": 2},
+    {"id": "order-5", "client_id": "person-5", "dish": "Красное вино", "quantity": 1},
+    {"id": "order-6", "client_id": "person-1", "dish": "Пина Колада", "quantity": 1},
+    {"id": "order-7", "client_id": "person-2", "dish": "Мартини", "quantity": 1},
+    {"id": "order-8", "client_id": "person-3", "dish": "Виски-кола", "quantity": 1},
+    {"id": "order-9", "client_id": "person-4", "dish": "Капучино", "quantity": 1},
+    {"id": "order-10", "client_id": "person-5", "dish": "Чай зелёный", "quantity": 1},
+    {"id": "order-11", "client_id": "person-1", "dish": "Салат Греческий", "quantity": 1},
+    {"id": "order-12", "client_id": "person-2", "dish": "Салат Оливье", "quantity": 1},
+    {"id": "order-13", "client_id": "person-3", "dish": "Салат с тунцом", "quantity": 1},
+    {"id": "order-14", "client_id": "person-4", "dish": "Салат с креветками", "quantity": 1},
+    {"id": "order-15", "client_id": "person-5", "dish": "Салат с ростбифом", "quantity": 1},
+    {"id": "order-16", "client_id": "person-1", "dish": "Стейк рибай", "quantity": 1},
+    {"id": "order-17", "client_id": "person-2", "dish": "Куриное филе с овощами", "quantity": 1},
+    {"id": "order-18", "client_id": "person-3", "dish": "Бефстроганов", "quantity": 1}
+  ]
+}
